@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b75d7mebg5mvp"]
+
+[ext_resource type="Texture2D" uid="uid://dt4s8825eh8l5" path="res://Spritesbase/Proyectile.png" id="1_3tfsx"]
+[ext_resource type="Script" path="res://ESCENAS/BALA.gd" id="1_f7yga"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8sbq"]
+radius = 3.0
+
+[node name="bala" type="Area2D"]
+script = ExtResource("1_f7yga")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.19209e-07, 0)
+scale = Vector2(0.287175, 0.154762)
+texture = ExtResource("1_3tfsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u8sbq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

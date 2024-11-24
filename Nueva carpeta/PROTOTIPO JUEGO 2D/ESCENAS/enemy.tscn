@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqhk1un4tek58"]
+
+[ext_resource type="Texture2D" uid="uid://bkulf8x0qp00w" path="res://Spritesbase/Prototipo_enemigo.png" id="1_uuayo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q45y5"]
+atlas = ExtResource("1_uuayo")
+region = Rect2(0, 0, 60, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m0as"]
+atlas = ExtResource("1_uuayo")
+region = Rect2(60, 0, 60, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj0we"]
+atlas = ExtResource("1_uuayo")
+region = Rect2(120, 0, 60, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukb6c"]
+atlas = ExtResource("1_uuayo")
+region = Rect2(180, 0, 60, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o6xg"]
+atlas = ExtResource("1_uuayo")
+region = Rect2(240, 0, 60, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0oii3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q45y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m0as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj0we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukb6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1o6xg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3e4m"]
+size = Vector2(7.86993, 15.7184)
+
+[node name="Enemy" type="RigidBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.96046e-08, 2.98023e-08)
+scale = Vector2(0.2, 0.225)
+sprite_frames = SubResource("SpriteFrames_0oii3")
+autoplay = "default"
+frame_progress = 0.262755
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.47444)
+scale = Vector2(1.27066, 1.08479)
+shape = SubResource("RectangleShape2D_q3e4m")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

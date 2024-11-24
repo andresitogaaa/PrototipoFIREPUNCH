@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvwmufku7oikw"]
+
+[ext_resource type="Script" path="res://ESCENAS/Arma.gd" id="1_3nsix"]
+[ext_resource type="Texture2D" uid="uid://c4hp4r1vxuyq4" path="res://Spritesbase/Player.png" id="2_3ut0b"]
+
+[node name="Arma" type="Node2D"]
+script = ExtResource("1_3nsix")
+shootspeed = 6.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.8125, -5.04871e-29)
+scale = Vector2(0.0683594, 0.0164062)
+texture = ExtResource("2_3ut0b")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(2, 0)
+
+[node name="Shootspeedtimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Shootspeedtimer" to="." method="_on_shootspeedtimer_timeout"]
