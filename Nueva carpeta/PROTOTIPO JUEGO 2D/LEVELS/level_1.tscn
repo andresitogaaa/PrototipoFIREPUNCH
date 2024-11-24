@@ -289,7 +289,7 @@ shape = SubResource("RectangleShape2D_7m0lw")
 [node name="Cajas" type="Node2D" parent="."]
 
 [node name="Caja_1" type="StaticBody2D" parent="Cajas"]
-position = Vector2(35, 150)
+position = Vector2(2, 150)
 scale = Vector2(0.319999, 0.319999)
 
 [node name="Sprite2D" type="Sprite2D" parent="Cajas/Caja_1"]
