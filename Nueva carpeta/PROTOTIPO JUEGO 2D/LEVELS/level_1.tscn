@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcs0yxvg5jif7"]
+[gd_scene load_steps=16 format=3 uid="uid://bcs0yxvg5jif7"]
 
 [ext_resource type="Texture2D" uid="uid://dorus13serxf6" path="res://fondo/background2.png" id="1_b28t0"]
 [ext_resource type="PackedScene" uid="uid://bknc3gcysyx8e" path="res://player.tscn" id="1_rk528"]
+[ext_resource type="Texture2D" uid="uid://djhoto6c4423v" path="res://Spritesbase/edificios destruidosver3.png" id="2_44yxh"]
 [ext_resource type="Texture2D" uid="uid://vjo6uwqtgqll" path="res://Spritesbase/Spriteambiente/Prototipo_casa.png" id="2_t5j21"]
 [ext_resource type="Texture2D" uid="uid://xngf36ojj0c7" path="res://Spritesbase/Spriteambiente/Prototipo_piso.png" id="2_uafuk"]
+[ext_resource type="Texture2D" uid="uid://l7gnsimpufpn" path="res://Spritesbase/edificios destruidosver2.png" id="3_m2se1"]
 [ext_resource type="Texture2D" uid="uid://doj5skpdpn3w8" path="res://Spritesbase/Spriteambiente/Prototipo_casa2.png" id="3_vddbs"]
 [ext_resource type="Script" path="res://Scripts/CAMARA/Camera2D.gd" id="4_3h5y3"]
 [ext_resource type="PackedScene" uid="uid://dqhk1un4tek58" path="res://ESCENAS/enemy.tscn" id="6_rst54"]
@@ -18,6 +20,9 @@ size = Vector2(48, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ex606"]
 size = Vector2(73, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee31"]
+size = Vector2(15, 232)
 
 [node name="level_1" type="Node2D"]
 position = Vector2(1, 0)
@@ -48,6 +53,19 @@ position = Vector2(-0.103772, -41.4344)
 scale = Vector2(0.997449, 0.774999)
 texture = ExtResource("1_b28t0")
 
+[node name="Edificios" type="Sprite2D" parent="Fondo"]
+modulate = Color(0.831373, 0.678431, 0.482353, 0.886275)
+position = Vector2(-34.1537, 12.1801)
+scale = Vector2(0.0675661, 0.247041)
+texture = ExtResource("2_44yxh")
+
+[node name="Edificios2" type="Sprite2D" parent="Fondo"]
+modulate = Color(0.831373, 0.678431, 0.482353, 1)
+position = Vector2(-27.7159, 7.93868)
+rotation = -3.14159
+scale = Vector2(0.0834067, -0.303392)
+texture = ExtResource("3_m2se1")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(125.156, -57.2394)
 ignore_rotation = false
@@ -57,44 +75,74 @@ limit_top = 0
 editor_draw_limits = true
 script = ExtResource("4_3h5y3")
 
-[node name="Casa1_1" type="StaticBody2D" parent="."]
+[node name="Estructuras" type="Node2D" parent="."]
+
+[node name="Casa1_1" type="StaticBody2D" parent="Estructuras"]
 position = Vector2(101, 144.4)
 scale = Vector2(0.832941, 0.832941)
 
-[node name="Sprite2D" type="Sprite2D" parent="Casa1_1"]
+[node name="Sprite2D" type="Sprite2D" parent="Estructuras/Casa1_1"]
 position = Vector2(73.2345, 16.3276)
 scale = Vector2(0.960453, 0.960453)
 texture = ExtResource("3_vddbs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Casa1_1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Estructuras/Casa1_1"]
 position = Vector2(75.5, -6)
 shape = SubResource("RectangleShape2D_d3g67")
 one_way_collision = true
 
-[node name="Casa1_2" type="StaticBody2D" parent="."]
+[node name="Casa1_2" type="StaticBody2D" parent="Estructuras"]
 position = Vector2(145, 144.4)
 scale = Vector2(0.832941, 0.832941)
 
-[node name="Sprite2D" type="Sprite2D" parent="Casa1_2"]
+[node name="Sprite2D" type="Sprite2D" parent="Estructuras/Casa1_2"]
 position = Vector2(74.435, 15.1271)
 scale = Vector2(0.960453, 0.960453)
 texture = ExtResource("3_vddbs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Casa1_2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Estructuras/Casa1_2"]
 position = Vector2(75.5, -6)
 shape = SubResource("RectangleShape2D_d3g67")
 one_way_collision = true
 
-[node name="Casa1_3" type="StaticBody2D" parent="."]
+[node name="Casa1_3" type="StaticBody2D" parent="Estructuras"]
 position = Vector2(280, 144.4)
 scale = Vector2(0.832941, 0.832941)
 
-[node name="Sprite2D" type="Sprite2D" parent="Casa1_3"]
+[node name="Sprite2D" type="Sprite2D" parent="Estructuras/Casa1_3"]
 position = Vector2(76.8362, 23.531)
 scale = Vector2(0.960453, 0.960453)
 texture = ExtResource("2_t5j21")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Casa1_3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Estructuras/Casa1_3"]
+position = Vector2(75.5, -6)
+shape = SubResource("RectangleShape2D_d3g67")
+one_way_collision = true
+
+[node name="Casa1_4" type="StaticBody2D" parent="Estructuras"]
+position = Vector2(441, 144.4)
+scale = Vector2(0.832941, 0.832941)
+
+[node name="Sprite2D" type="Sprite2D" parent="Estructuras/Casa1_4"]
+position = Vector2(73.2345, 16.3276)
+scale = Vector2(0.960453, 0.960453)
+texture = ExtResource("3_vddbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Estructuras/Casa1_4"]
+position = Vector2(75.5, -6)
+shape = SubResource("RectangleShape2D_d3g67")
+one_way_collision = true
+
+[node name="Casa1_5" type="StaticBody2D" parent="Estructuras"]
+position = Vector2(485, 144.4)
+scale = Vector2(0.832941, 0.832941)
+
+[node name="Sprite2D" type="Sprite2D" parent="Estructuras/Casa1_5"]
+position = Vector2(74.435, 15.1271)
+scale = Vector2(0.960453, 0.960453)
+texture = ExtResource("3_vddbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Estructuras/Casa1_5"]
 position = Vector2(75.5, -6)
 shape = SubResource("RectangleShape2D_d3g67")
 one_way_collision = true
@@ -372,3 +420,9 @@ layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("9_af6o5")
 expand_mode = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-11.5, 105)
+shape = SubResource("RectangleShape2D_gee31")

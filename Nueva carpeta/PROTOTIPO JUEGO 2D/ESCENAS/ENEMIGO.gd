@@ -12,4 +12,12 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	pass # Replace with function body.
+	if (body.name == "CharacterBody2D"):
+		var y_delta = position.y - body.position.y
+		if (y_delta > 30):
+			print("Destroy enemy")
+		else:
+			print("Decrease player health")
+		
+func get_damage(damage):
+	queue_free()
