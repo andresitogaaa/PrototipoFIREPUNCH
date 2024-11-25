@@ -48,7 +48,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3e4m"]
 size = Vector2(7.86993, 15.7184)
 
-[node name="Enemy" type="RigidBody2D"]
+[node name="Enemy" type="RigidBody2D" groups=["enemies"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(5.96046e-08, 2.98023e-08)

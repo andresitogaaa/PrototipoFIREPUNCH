@@ -29,7 +29,7 @@ func _on_shootspeedtimer_timeout():
 	
 func setup_direction(direction):
 	bulletDirection = direction
-	
+		
 	if direction.x > 0:
 		scale.x = 1
 		rotation_degrees = 0
