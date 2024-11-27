@@ -92,16 +92,6 @@ rotation = -3.14159
 scale = Vector2(0.0777795, -0.282923)
 texture = ExtResource("3_m2se1")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(3.05176e-05, 0)
-scale = Vector2(125.156, -57.2394)
-ignore_rotation = false
-zoom = Vector2(3, 3)
-limit_left = 0
-limit_top = 0
-editor_draw_limits = true
-script = ExtResource("4_3h5y3")
-
 [node name="Estructuras" type="Node2D" parent="."]
 
 [node name="Casa1_1" type="StaticBody2D" parent="Estructuras"]
@@ -195,15 +185,12 @@ scale = Vector2(1.94615, 1.73698)
 
 [node name="Edificiofuera" type="Sprite2D" parent="Edificios"]
 modulate = Color(0.870588, 0.866667, 0.862745, 1)
-scale = Vector2(1, 1)
 texture = ExtResource("2_v2qe0")
 
 [node name="Area2D" type="Area2D" parent="Edificios"]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Edificios/Area2D"]
 position = Vector2(0.138275, 87.0391)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_m0e5r")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Edificios/Area2D"]
@@ -215,7 +202,6 @@ modulate = Color(0.0980392, 0.0980392, 0.0980392, 0.160784)
 position = Vector2(753, 46.375)
 scale = Vector2(17.6333, 6.73551)
 texture = ExtResource("1_b28t0")
-metadata/_edit_lock_ = true
 
 [node name="Piso" type="Node2D" parent="."]
 position = Vector2(-58, 113)
@@ -523,3 +509,20 @@ expand_mode = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-16, 105)
 shape = SubResource("RectangleShape2D_gee31")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1.00003, 0)
+scale = Vector2(125.156, -57.2394)
+zoom = Vector2(3, 2.7)
+limit_left = 0
+limit_top = -19
+limit_bottom = 39
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.35
+drag_top_margin = 0.27
+drag_right_margin = 0.1
+drag_bottom_margin = 0.24
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("4_3h5y3")
