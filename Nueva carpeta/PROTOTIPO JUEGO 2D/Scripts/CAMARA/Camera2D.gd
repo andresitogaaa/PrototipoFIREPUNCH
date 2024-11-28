@@ -4,29 +4,22 @@ extends Camera2D
 @export var camera: camera_state
 enum camera_state {FOLLOW, PANNING}
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+var vueltaCamara = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Global.panning_camera:
-		camera_panning()
-	else:
-		camera_follow()
+		camera_panning(delta)
+	
 
-func camera_panning():
-	anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
-	position = player.position
-	var x = floor(position.x / 320) * 320
-	var y = floor(position.y / 180) * 180
-
-	position = Vector2(x,y)
-
-	var tween := create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "position", Vector2(x,y), 0.14)
-
-func camera_follow():
-	anchor_mode = Camera2D.ANCHOR_MODE_DRAG_CENTER
-	position = player.position
+func camera_panning(delta):
+	if offset.x <= 220 and !vueltaCamara:
+		offset.x += 100 * delta
+	elif offset.x >= 220 and !vueltaCamara:
+		vueltaCamara = true
+	elif offset.x > 0 and vueltaCamara:
+		offset.x -= 100 * delta
+	elif offset.x <= 0 and vueltaCamara:
+		offset.x = 0
+		Global.player_speed = 100.0
+		Global.panning_camera = false

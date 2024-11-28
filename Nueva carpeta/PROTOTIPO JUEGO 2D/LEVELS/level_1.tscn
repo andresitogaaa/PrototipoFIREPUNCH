@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bcs0yxvg5jif7"]
+[gd_scene load_steps=29 format=3 uid="uid://bcs0yxvg5jif7"]
 
 [ext_resource type="Texture2D" uid="uid://dorus13serxf6" path="res://fondo/background2.png" id="1_b28t0"]
 [ext_resource type="Script" path="res://LEVELS/level_1.gd" id="1_nw5by"]
@@ -15,9 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://dwccao2gg4t6u" path="res://Spritesbase/Life_bar.png" id="9_af6o5"]
 [ext_resource type="Texture2D" uid="uid://dqdjb18vlerlf" path="res://Spritesbase/Spriteambiente/Apartamento dentro.png" id="10_dpshu"]
 [ext_resource type="Texture2D" uid="uid://d0bxq1yl33wlh" path="res://Spritesbase/Spriteambiente/Entradaboss.png" id="11_n68yg"]
+[ext_resource type="PackedScene" uid="uid://dhuefbm30ab85" path="res://ESCENAS/boss.tscn" id="16_fxplq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3g67"]
-size = Vector2(56, 8)
+size = Vector2(56, 6.88417)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2m1g4"]
 rough = true
@@ -41,7 +42,15 @@ size = Vector2(73, 71)
 size = Vector2(15, 232)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htmkr"]
-size = Vector2(21, 171.375)
+size = Vector2(11.5, 165)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eirb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7sw1"]
+size = Vector2(13.5, 165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vhbl"]
+size = Vector2(15, 156)
 
 [node name="level_1" type="Node2D"]
 position = Vector2(1, 0)
@@ -145,7 +154,7 @@ scale = Vector2(0.960453, 0.960453)
 texture = ExtResource("2_t5j21")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Estructuras/Casa1_3"]
-position = Vector2(75.5, -6)
+position = Vector2(75.5, -5.44209)
 shape = SubResource("RectangleShape2D_d3g67")
 one_way_collision = true
 
@@ -178,8 +187,25 @@ shape = SubResource("RectangleShape2D_d3g67")
 one_way_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_rk528")]
-position = Vector2(16, 172)
+position = Vector2(19, 172)
 jump_force = 380
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-15, -172)
+scale = Vector2(125.156, -57.2394)
+zoom = Vector2(3, 2.7)
+limit_left = 0
+limit_top = -19
+limit_bottom = 39
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.65
+drag_top_margin = 0.28
+drag_right_margin = 0.0
+drag_bottom_margin = 0.18
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("4_3h5y3")
 
 [node name="Enemigos" type="Node2D" parent="."]
 
@@ -192,16 +218,46 @@ position = Vector2(253, 177)
 [node name="Enemy3" parent="Enemigos" instance=ExtResource("6_rst54")]
 position = Vector2(343, 122)
 
+[node name="Enemy4" parent="Enemigos" instance=ExtResource("6_rst54")]
+position = Vector2(450, 180)
+
+[node name="Enemy5" parent="Enemigos" instance=ExtResource("6_rst54")]
+z_index = 1
+position = Vector2(892, 182)
+
+[node name="Enemy6" parent="Enemigos" instance=ExtResource("6_rst54")]
+z_index = 1
+position = Vector2(528, 127)
+
+[node name="Enemy7" parent="Enemigos" instance=ExtResource("6_rst54")]
+z_index = 1
+position = Vector2(1127, 180)
+
+[node name="Enemy9" parent="Enemigos" instance=ExtResource("6_rst54")]
+z_index = 1
+position = Vector2(1307, 179)
+
+[node name="Enemy8" parent="Enemigos" instance=ExtResource("6_rst54")]
+position = Vector2(587, 179)
+
+[node name="Enemy10" parent="Enemigos" instance=ExtResource("6_rst54")]
+z_index = 1
+position = Vector2(1220, 129)
+
+[node name="Enemy11" parent="Enemigos" instance=ExtResource("6_rst54")]
+z_index = 1
+position = Vector2(1397, 173)
+
 [node name="Edificios" type="Node2D" parent="."]
 position = Vector2(743, 36)
 scale = Vector2(1.94615, 1.73698)
 
 [node name="Edificiodentro" type="Sprite2D" parent="Edificios"]
 position = Vector2(-1.4782e-05, 0)
-scale = Vector2(1, 1)
 texture = ExtResource("10_dpshu")
 
 [node name="Edificiofuera" type="Sprite2D" parent="Edificios"]
+visible = false
 modulate = Color(0.870588, 0.866667, 0.862745, 1)
 texture = ExtResource("2_v2qe0")
 
@@ -210,7 +266,6 @@ physics_material_override = SubResource("PhysicsMaterial_2m1g4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Edificios/Area2D"]
 position = Vector2(0.138275, 86.4633)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_m0e5r")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Edificios/Area2D"]
@@ -221,16 +276,14 @@ shape = SubResource("RectangleShape2D_nte0h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Edificios/AreaEdificio"]
 position = Vector2(1.02768, 61.6012)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vqs2l")
 debug_color = Color(0.286275, 0.121569, 0.184314, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.0980392, 0.0980392, 0.0980392, 0.160784)
-position = Vector2(1053.25, 46.375)
+position = Vector2(1064, 29)
 scale = Vector2(24.3055, 6.73551)
 texture = ExtResource("1_b28t0")
-metadata/_edit_lock_ = true
 
 [node name="EscenarioBoss" type="Sprite2D" parent="."]
 position = Vector2(1522.74, 113)
@@ -238,7 +291,7 @@ scale = Vector2(0.847368, 0.847368)
 texture = ExtResource("11_n68yg")
 
 [node name="EscenarioBoss2" type="Sprite2D" parent="."]
-position = Vector2(1920, 113)
+position = Vector2(1943, 113)
 scale = Vector2(0.847368, 0.847368)
 texture = ExtResource("11_n68yg")
 flip_h = true
@@ -648,29 +701,31 @@ expand_mode = 2
 position = Vector2(-16, 105)
 shape = SubResource("RectangleShape2D_gee31")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1.00003, 0)
-scale = Vector2(125.156, -57.2394)
-zoom = Vector2(3, 2.7)
-limit_left = 0
-limit_top = -19
-limit_bottom = 39
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.35
-drag_top_margin = 0.27
-drag_right_margin = 0.1
-drag_bottom_margin = 0.24
-editor_draw_limits = true
-editor_draw_drag_margin = true
-script = ExtResource("4_3h5y3")
-
 [node name="PaneoCamaraBoss" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PaneoCamaraBoss"]
-position = Vector2(1517, 102.688)
+position = Vector2(1576, 109)
 shape = SubResource("RectangleShape2D_htmkr")
 debug_color = Color(0.647059, 0.364706, 0.247059, 0.717647)
+
+[node name="Paredarena" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_eirb8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredarena"]
+position = Vector2(1546, 110)
+shape = SubResource("RectangleShape2D_c7sw1")
+disabled = true
+
+[node name="Paredarena2" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_eirb8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredarena2"]
+position = Vector2(1922.5, 111)
+scale = Vector2(1.0048, 1)
+shape = SubResource("RectangleShape2D_4vhbl")
+
+[node name="Boss" parent="." instance=ExtResource("16_fxplq")]
+position = Vector2(1839, 159)
 
 [connection signal="body_entered" from="Edificios/AreaEdificio" to="." method="_on_area_edificio_body_entered"]
 [connection signal="body_exited" from="Edificios/AreaEdificio" to="." method="_on_area_edificio_body_exited"]

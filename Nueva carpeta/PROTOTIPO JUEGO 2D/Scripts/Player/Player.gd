@@ -11,23 +11,36 @@ var jump_count = 0
 
 var direction = Vector2.ZERO
 
-# Called when the node enters the scene tree for the first time.
+var Muerte = false
+
 func _ready():
-	pass # Replace with function body.
+	Global.Player_life = 4
+	$Sprite2D.play("idle")
+
+
 func _physics_process(delta):
-	
-	if Input.is_action_just_pressed("atacar"):
-		gun.shoot()
-	
-	direction.x = Input.get_axis("ui_left", "ui_right")
-	direction.y = Input.get_axis("ui_up", "ui_down")
+	if Global.Player_life > 0:
+		if Input.is_action_just_pressed("atacar"):
+			gun.shoot()
 		
-	if direction != Vector2.ZERO:
-		gun.setup_direction(direction)
+		direction.x = Input.get_axis("ui_left", "ui_right")
+		direction.y = Input.get_axis("ui_up", "ui_down")
+			
+		if direction != Vector2.ZERO:
+			gun.setup_direction(direction)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	movement(delta)
+	speed = Global.player_speed
+	if Global.Player_life > 0:
+		movement(delta)
+	elif Global.Player_life == 0 and !Muerte:
+		if $Sprite2D.flip_h:
+			$Sprite2D.flip_h = false
+		else:
+			$Sprite2D.flip_h = true
+		$Sprite2D.play("Muerteanimacion")
+		Muerte = true
 
 func movement(delta):
 	input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -68,3 +81,6 @@ func movement(delta):
 func gravity_force():
 	velocity.y += gravity
 
+func _on_sprite_2d_animation_finished():
+	if $Sprite2D.get_animation() == "Muerteanimacion":
+		get_tree().change_scene_to_file("res://LEVELS/level_1.tscn")
