@@ -11,11 +11,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	match camera:
-		camera_state.FOLLOW:
-			camera_follow()
-		camera_state.PANNING:
-			camera_panning()
+	if Global.panning_camera:
+		camera_panning()
+	else:
+		camera_follow()
 
 func camera_panning():
 	anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT

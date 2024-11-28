@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bcs0yxvg5jif7"]
+[gd_scene load_steps=25 format=3 uid="uid://bcs0yxvg5jif7"]
 
 [ext_resource type="Texture2D" uid="uid://dorus13serxf6" path="res://fondo/background2.png" id="1_b28t0"]
+[ext_resource type="Script" path="res://LEVELS/level_1.gd" id="1_nw5by"]
 [ext_resource type="PackedScene" uid="uid://bknc3gcysyx8e" path="res://player.tscn" id="1_rk528"]
 [ext_resource type="Texture2D" uid="uid://djhoto6c4423v" path="res://Spritesbase/edificios destruidosver3.png" id="2_44yxh"]
 [ext_resource type="Texture2D" uid="uid://vjo6uwqtgqll" path="res://Spritesbase/Spriteambiente/Prototipo_casa.png" id="2_t5j21"]
@@ -12,15 +13,23 @@
 [ext_resource type="PackedScene" uid="uid://dqhk1un4tek58" path="res://ESCENAS/enemy.tscn" id="6_rst54"]
 [ext_resource type="Texture2D" uid="uid://cxk6101l1qn5i" path="res://Spritesbase/Spriteambiente/caja.png" id="7_g544p"]
 [ext_resource type="Texture2D" uid="uid://dwccao2gg4t6u" path="res://Spritesbase/Life_bar.png" id="9_af6o5"]
+[ext_resource type="Texture2D" uid="uid://dqdjb18vlerlf" path="res://Spritesbase/Spriteambiente/Apartamento dentro.png" id="10_dpshu"]
+[ext_resource type="Texture2D" uid="uid://d0bxq1yl33wlh" path="res://Spritesbase/Spriteambiente/Entradaboss.png" id="11_n68yg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3g67"]
 size = Vector2(56, 8)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2m1g4"]
+rough = true
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0e5r"]
-size = Vector2(116.878, 4.81859)
+size = Vector2(116.878, 5.97017)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nte0h"]
 size = Vector2(112.53, 126.657)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqs2l"]
+size = Vector2(83.2413, 43.7541)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7m0lw"]
 size = Vector2(48, 16)
@@ -31,8 +40,12 @@ size = Vector2(73, 71)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee31"]
 size = Vector2(15, 232)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htmkr"]
+size = Vector2(21, 171.375)
+
 [node name="level_1" type="Node2D"]
 position = Vector2(1, 0)
+script = ExtResource("1_nw5by")
 
 [node name="GameManager" type="Node2D" parent="."]
 
@@ -41,27 +54,27 @@ position = Vector2(575.122, 79)
 scale = Vector2(14.184, 3.6232)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Fondo"]
-position = Vector2(10.2791, 0)
-scale = Vector2(1.22842, 1)
+position = Vector2(32.4873, 0)
+scale = Vector2(1.72194, 1)
 texture = ExtResource("1_b28t0")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Fondo"]
 modulate = Color(0.843137, 0.690196, 0.545098, 0.243137)
 self_modulate = Color(0.843137, 0.690196, 0.545098, 0.47451)
-position = Vector2(10.2846, -17.1465)
-scale = Vector2(1.2283, 0.774999)
+position = Vector2(32.4928, -17.1465)
+scale = Vector2(1.72182, 0.774999)
 texture = ExtResource("1_b28t0")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Fondo"]
 modulate = Color(0.843137, 0.690196, 0.545098, 0.47451)
-position = Vector2(10.2846, -29.2904)
-scale = Vector2(1.2283, 0.774999)
+position = Vector2(32.4928, -29.2904)
+scale = Vector2(1.72182, 0.774999)
 texture = ExtResource("1_b28t0")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Fondo"]
 modulate = Color(0.843137, 0.690196, 0.545098, 0.47451)
-position = Vector2(10.3199, -41.4344)
-scale = Vector2(1.22909, 0.774999)
+position = Vector2(32.4927, -41.4344)
+scale = Vector2(1.72182, 0.774999)
 texture = ExtResource("1_b28t0")
 
 [node name="Edificios4" type="Sprite2D" parent="Fondo"]
@@ -165,7 +178,7 @@ shape = SubResource("RectangleShape2D_d3g67")
 one_way_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_rk528")]
-position = Vector2(15, 170)
+position = Vector2(16, 172)
 jump_force = 380
 
 [node name="Enemigos" type="Node2D" parent="."]
@@ -183,25 +196,52 @@ position = Vector2(343, 122)
 position = Vector2(743, 36)
 scale = Vector2(1.94615, 1.73698)
 
+[node name="Edificiodentro" type="Sprite2D" parent="Edificios"]
+position = Vector2(-1.4782e-05, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("10_dpshu")
+
 [node name="Edificiofuera" type="Sprite2D" parent="Edificios"]
 modulate = Color(0.870588, 0.866667, 0.862745, 1)
 texture = ExtResource("2_v2qe0")
 
-[node name="Area2D" type="Area2D" parent="Edificios"]
+[node name="Area2D" type="StaticBody2D" parent="Edificios"]
+physics_material_override = SubResource("PhysicsMaterial_2m1g4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Edificios/Area2D"]
-position = Vector2(0.138275, 87.0391)
+position = Vector2(0.138275, 86.4633)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_m0e5r")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Edificios/Area2D"]
 position = Vector2(0.256927, -23.6042)
 shape = SubResource("RectangleShape2D_nte0h")
 
+[node name="AreaEdificio" type="Area2D" parent="Edificios"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edificios/AreaEdificio"]
+position = Vector2(1.02768, 61.6012)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_vqs2l")
+debug_color = Color(0.286275, 0.121569, 0.184314, 0.419608)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.0980392, 0.0980392, 0.0980392, 0.160784)
-position = Vector2(753, 46.375)
-scale = Vector2(17.6333, 6.73551)
+position = Vector2(1053.25, 46.375)
+scale = Vector2(24.3055, 6.73551)
 texture = ExtResource("1_b28t0")
+metadata/_edit_lock_ = true
+
+[node name="EscenarioBoss" type="Sprite2D" parent="."]
+position = Vector2(1522.74, 113)
+scale = Vector2(0.847368, 0.847368)
+texture = ExtResource("11_n68yg")
+
+[node name="EscenarioBoss2" type="Sprite2D" parent="."]
+position = Vector2(1920, 113)
+scale = Vector2(0.847368, 0.847368)
+texture = ExtResource("11_n68yg")
+flip_h = true
 
 [node name="Piso" type="Node2D" parent="."]
 position = Vector2(-58, 113)
@@ -417,6 +457,104 @@ region_rect = Rect2(0, 0, 90, 31)
 position = Vector2(-28.0484, 60.25)
 shape = SubResource("RectangleShape2D_7m0lw")
 
+[node name="Suelo_temporal_18" type="StaticBody2D" parent="Piso"]
+position = Vector2(787.736, -16.0377)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piso/Suelo_temporal_18"]
+position = Vector2(-28.0484, 60.25)
+scale = Vector2(0.532258, 0.532258)
+texture = ExtResource("2_uafuk")
+region_enabled = true
+region_rect = Rect2(0, 0, 90, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso/Suelo_temporal_18"]
+position = Vector2(-28.0484, 60.25)
+shape = SubResource("RectangleShape2D_7m0lw")
+
+[node name="Suelo_temporal_19" type="StaticBody2D" parent="Piso"]
+position = Vector2(835.378, -16.0377)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piso/Suelo_temporal_19"]
+position = Vector2(-28.0484, 60.25)
+scale = Vector2(0.532258, 0.532258)
+texture = ExtResource("2_uafuk")
+region_enabled = true
+region_rect = Rect2(0, 0, 90, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso/Suelo_temporal_19"]
+position = Vector2(-28.0484, 60.25)
+shape = SubResource("RectangleShape2D_7m0lw")
+
+[node name="Suelo_temporal_20" type="StaticBody2D" parent="Piso"]
+position = Vector2(883.019, -16.0377)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piso/Suelo_temporal_20"]
+position = Vector2(-28.0484, 60.25)
+scale = Vector2(0.532258, 0.532258)
+texture = ExtResource("2_uafuk")
+region_enabled = true
+region_rect = Rect2(0, 0, 90, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso/Suelo_temporal_20"]
+position = Vector2(-28.0484, 60.25)
+shape = SubResource("RectangleShape2D_7m0lw")
+
+[node name="Suelo_temporal_21" type="StaticBody2D" parent="Piso"]
+position = Vector2(930.189, -16.0377)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piso/Suelo_temporal_21"]
+position = Vector2(-28.0484, 60.25)
+scale = Vector2(0.532258, 0.532258)
+texture = ExtResource("2_uafuk")
+region_enabled = true
+region_rect = Rect2(0, 0, 90, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso/Suelo_temporal_21"]
+position = Vector2(-28.0484, 60.25)
+shape = SubResource("RectangleShape2D_7m0lw")
+
+[node name="Suelo_temporal_22" type="StaticBody2D" parent="Piso"]
+position = Vector2(977.831, -16.0377)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piso/Suelo_temporal_22"]
+position = Vector2(-28.0484, 60.25)
+scale = Vector2(0.532258, 0.532258)
+texture = ExtResource("2_uafuk")
+region_enabled = true
+region_rect = Rect2(0, 0, 90, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso/Suelo_temporal_22"]
+position = Vector2(-28.0484, 60.25)
+shape = SubResource("RectangleShape2D_7m0lw")
+
+[node name="Suelo_temporal_23" type="StaticBody2D" parent="Piso"]
+position = Vector2(1025.47, -16.0377)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piso/Suelo_temporal_23"]
+position = Vector2(-28.0484, 60.25)
+scale = Vector2(0.532258, 0.532258)
+texture = ExtResource("2_uafuk")
+region_enabled = true
+region_rect = Rect2(0, 0, 90, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso/Suelo_temporal_23"]
+position = Vector2(-28.0484, 60.25)
+shape = SubResource("RectangleShape2D_7m0lw")
+
+[node name="Suelo_temporal_24" type="StaticBody2D" parent="Piso"]
+position = Vector2(1072.64, -16.0377)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piso/Suelo_temporal_24"]
+position = Vector2(-28.0484, 60.25)
+scale = Vector2(0.532258, 0.532258)
+texture = ExtResource("2_uafuk")
+region_enabled = true
+region_rect = Rect2(0, 0, 90, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso/Suelo_temporal_24"]
+position = Vector2(-28.0484, 60.25)
+shape = SubResource("RectangleShape2D_7m0lw")
+
 [node name="Cajas" type="Node2D" parent="."]
 
 [node name="Caja_1" type="StaticBody2D" parent="Cajas"]
@@ -526,3 +664,15 @@ drag_bottom_margin = 0.24
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("4_3h5y3")
+
+[node name="PaneoCamaraBoss" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PaneoCamaraBoss"]
+position = Vector2(1517, 102.688)
+shape = SubResource("RectangleShape2D_htmkr")
+debug_color = Color(0.647059, 0.364706, 0.247059, 0.717647)
+
+[connection signal="body_entered" from="Edificios/AreaEdificio" to="." method="_on_area_edificio_body_entered"]
+[connection signal="body_exited" from="Edificios/AreaEdificio" to="." method="_on_area_edificio_body_exited"]
+[connection signal="body_entered" from="PaneoCamaraBoss" to="." method="_on_paneo_camara_boss_body_entered"]
+[connection signal="body_exited" from="PaneoCamaraBoss" to="." method="_on_paneo_camara_boss_body_exited"]
