@@ -70,27 +70,27 @@ script = ExtResource("2_xyvnj")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Fondo/ParallaxBackground"]
 
 [node name="Sprite2D2" type="Sprite2D" parent="Fondo/ParallaxBackground/ParallaxLayer"]
-position = Vector2(1036.92, 79)
-scale = Vector2(24.424, 3.6232)
+position = Vector2(1073.92, 79)
+scale = Vector2(25.2462, 3.6232)
 texture = ExtResource("1_b28t0")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Fondo/ParallaxBackground/ParallaxLayer"]
 modulate = Color(0.843137, 0.690196, 0.545098, 0.243137)
 self_modulate = Color(0.843137, 0.690196, 0.545098, 0.47451)
-position = Vector2(1037, 16.8748)
-scale = Vector2(24.4223, 2.80798)
+position = Vector2(1074, 16.8748)
+scale = Vector2(25.2445, 2.80798)
 texture = ExtResource("1_b28t0")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Fondo/ParallaxBackground/ParallaxLayer"]
 modulate = Color(0.843137, 0.690196, 0.545098, 0.47451)
-position = Vector2(1037, -27.125)
-scale = Vector2(24.4223, 2.80798)
+position = Vector2(1073.5, -27.125)
+scale = Vector2(25.2334, 2.80798)
 texture = ExtResource("1_b28t0")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Fondo/ParallaxBackground/ParallaxLayer"]
 modulate = Color(0.843137, 0.690196, 0.545098, 0.47451)
-position = Vector2(1037, -71.1251)
-scale = Vector2(24.4223, 2.80798)
+position = Vector2(1072.5, -71.1251)
+scale = Vector2(25.2112, 2.80798)
 texture = ExtResource("1_b28t0")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Fondo/ParallaxBackground"]
@@ -105,6 +105,7 @@ texture = ExtResource("2_44yxh")
 centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="Fondo/ParallaxBackground"]
+position = Vector2(170, 0)
 motion_scale = Vector2(0.2, 1)
 motion_mirroring = Vector2(260, 0)
 
@@ -116,12 +117,13 @@ texture = ExtResource("3_nmmth")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Fondo/ParallaxBackground"]
+position = Vector2(-228, 0)
 motion_scale = Vector2(0.3, 1)
-motion_mirroring = Vector2(260, 0)
+motion_mirroring = Vector2(460, 0)
 
 [node name="Edificios3" type="Sprite2D" parent="Fondo/ParallaxBackground/ParallaxLayer3"]
 modulate = Color(0.890196, 0.729412, 0.588235, 1)
-position = Vector2(353, 109)
+position = Vector2(353, 99)
 rotation = -3.14159
 scale = Vector2(0.619902, -0.606249)
 texture = ExtResource("2_v2qe0")
@@ -133,7 +135,7 @@ motion_mirroring = Vector2(380, 0)
 
 [node name="Edificios2" type="Sprite2D" parent="Fondo/ParallaxBackground/ParallaxLayer4"]
 modulate = Color(0.831373, 0.678431, 0.482353, 1)
-position = Vector2(266.661, 8.73199)
+position = Vector2(243, 9)
 rotation = -3.14159
 scale = Vector2(1.24355, -1.26687)
 texture = ExtResource("3_m2se1")
@@ -141,11 +143,11 @@ centered = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="Fondo/ParallaxBackground"]
 motion_scale = Vector2(0.5, 1)
-motion_mirroring = Vector2(371.429, 0)
+motion_mirroring = Vector2(600, 0)
 
 [node name="Edificios4" type="Sprite2D" parent="Fondo/ParallaxBackground/ParallaxLayer5"]
 modulate = Color(0.627451, 0.490196, 0.301961, 1)
-position = Vector2(457, -40)
+position = Vector2(181, -40)
 scale = Vector2(1.7, 1.7)
 texture = ExtResource("2_v2qe0")
 centered = false
@@ -224,7 +226,7 @@ shape = SubResource("RectangleShape2D_d3g67")
 one_way_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_rk528")]
-position = Vector2(859, 171)
+position = Vector2(22, 171)
 jump_force = 380
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

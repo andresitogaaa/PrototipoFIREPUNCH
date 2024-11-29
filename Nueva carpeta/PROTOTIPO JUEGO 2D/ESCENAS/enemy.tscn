@@ -1,7 +1,40 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqhk1un4tek58"]
+[gd_scene load_steps=25 format=3 uid="uid://dqhk1un4tek58"]
 
 [ext_resource type="Script" path="res://ESCENAS/ENEMIGO.gd" id="1_gepxm"]
 [ext_resource type="Texture2D" uid="uid://chndkpn5o1akw" path="res://Spritesbase/Spritesenemigo/Reposo Enemigo.png" id="2_4tnmm"]
+[ext_resource type="Texture2D" uid="uid://dhg6xjgmill53" path="res://Spritesbase/Spritesenemigo/Correr enemigo.png" id="2_akwh6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr06b"]
+atlas = ExtResource("2_akwh6")
+region = Rect2(0, 0, 57, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mu3t"]
+atlas = ExtResource("2_akwh6")
+region = Rect2(57, 0, 57, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7del"]
+atlas = ExtResource("2_akwh6")
+region = Rect2(114, 0, 57, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yndte"]
+atlas = ExtResource("2_akwh6")
+region = Rect2(171, 0, 57, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6ipx"]
+atlas = ExtResource("2_akwh6")
+region = Rect2(228, 0, 57, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm0qy"]
+atlas = ExtResource("2_akwh6")
+region = Rect2(285, 0, 57, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1i5s"]
+atlas = ExtResource("2_akwh6")
+region = Rect2(342, 0, 57, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0hxt"]
+atlas = ExtResource("2_akwh6")
+region = Rect2(399, 0, 57, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpyxp"]
 atlas = ExtResource("2_4tnmm")
@@ -47,6 +80,35 @@ region = Rect2(414, 0, 46, 62)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lr06b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mu3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7del")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yndte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6ipx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm0qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1i5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0hxt")
+}],
+"loop": true,
+"name": &"correr",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rpyxp")
 }, {
 "duration": 1.0,
@@ -87,15 +149,16 @@ size = Vector2(19.6748, 35.9516)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14eg5"]
 size = Vector2(33.5, 41)
 
-[node name="Enemy" type="RigidBody2D" groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+slide_on_ceiling = false
 script = ExtResource("1_gepxm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(10.5, -11.9286)
 scale = Vector2(0.673913, 0.642857)
 sprite_frames = SubResource("SpriteFrames_0oii3")
+animation = &"correr"
 autoplay = "default"
-frame_progress = 0.947352
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(13.5, -11.5)
@@ -107,5 +170,11 @@ shape = SubResource("RectangleShape2D_q3e4m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(11.25, -12.5)
 shape = SubResource("RectangleShape2D_14eg5")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-59, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(51, 0)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

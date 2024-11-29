@@ -1,14 +1,28 @@
-extends RigidBody2D
+extends CharacterBody2D
 
+var Gravedad = 9.8
+var speed = 20
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	velocity.x = -speed
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+	velocity.y += Gravedad
+	
+	#if is_on_wall():
+	if velocity.x > 0:
+		velocity.x = -speed
+	elif velocity.x < 0:
+		velocity.x = speed
+	
+	if velocity.x < 0:
+		$AnimatedSprite2D.flip_h = false
+	elif velocity.x > 0:
+		$AnimatedSprite2D.flip_h = true
+	
+	move_and_slide()
 
 
 func _on_area_2d_body_entered(body):
