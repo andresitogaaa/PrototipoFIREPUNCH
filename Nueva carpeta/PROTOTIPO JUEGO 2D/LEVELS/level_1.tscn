@@ -257,7 +257,6 @@ position = Vector2(-1.4782e-05, 0)
 texture = ExtResource("10_dpshu")
 
 [node name="Edificiofuera" type="Sprite2D" parent="Edificios"]
-visible = false
 modulate = Color(0.870588, 0.866667, 0.862745, 1)
 texture = ExtResource("2_v2qe0")
 
