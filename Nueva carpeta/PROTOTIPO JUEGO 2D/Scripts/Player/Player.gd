@@ -32,6 +32,7 @@ func _physics_process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	speed = Global.player_speed
+	Global.player_velocity = velocity
 	if Global.Player_life > 0:
 		movement(delta)
 	elif Global.Player_life == 0 and !Muerte:
@@ -41,6 +42,7 @@ func _process(delta):
 			$Sprite2D.flip_h = true
 		$Sprite2D.play("Muerteanimacion")
 		Muerte = true
+		
 
 func movement(delta):
 	input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")

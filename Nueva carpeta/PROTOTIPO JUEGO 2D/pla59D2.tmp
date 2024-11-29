@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bknc3gcysyx8e"]
+[gd_scene load_steps=17 format=3 uid="uid://bknc3gcysyx8e"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_2dbi8"]
 [ext_resource type="Texture2D" uid="uid://d1l7h0dpmj122" path="res://Spritesbase/Spritesenemigo/Muerte enemigo.png" id="2_2p882"]
+[ext_resource type="Texture2D" uid="uid://ccjauafko4eam" path="res://Spritesbase/Boceto_ply.png" id="2_87433"]
 [ext_resource type="PackedScene" uid="uid://bvwmufku7oikw" path="res://ESCENAS/ARMA.tscn" id="3_pf3dm"]
-[ext_resource type="Texture2D" uid="uid://cc1uct3fydh6v" path="res://Spritesbase/Spritesenemigo/CorrerMC.png" id="3_s1vod"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mocy"]
 atlas = ExtResource("2_2p882")
@@ -41,10 +41,6 @@ region = Rect2(490, 0, 70, 55)
 atlas = ExtResource("2_2p882")
 region = Rect2(560, 0, 70, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k6i02"]
-atlas = ExtResource("3_s1vod")
-region = Rect2(0, 0, 49, 54)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_8lr54"]
 animations = [{
 "frames": [{
@@ -81,7 +77,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k6i02")
+"texture": ExtResource("2_87433")
 }],
 "loop": true,
 "name": &"idle",
@@ -113,7 +109,7 @@ shape = SubResource("RectangleShape2D_5mien")
 
 [node name="Arma" parent="." instance=ExtResource("3_pf3dm")]
 visible = false
-position = Vector2(1.5, -6)
+position = Vector2(1.5, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 
