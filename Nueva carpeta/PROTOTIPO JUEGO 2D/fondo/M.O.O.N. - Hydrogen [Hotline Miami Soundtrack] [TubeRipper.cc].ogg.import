@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cwsklfm1qev2l"
+path="res://.godot/imported/M.O.O.N. - Hydrogen [Hotline Miami Soundtrack] [TubeRipper.cc].ogg-205fdeb50e5c4913ead2297a10f51e35.oggvorbisstr"
+
+[deps]
+
+source_file="res://fondo/M.O.O.N. - Hydrogen [Hotline Miami Soundtrack] [TubeRipper.cc].ogg"
+dest_files=["res://.godot/imported/M.O.O.N. - Hydrogen [Hotline Miami Soundtrack] [TubeRipper.cc].ogg-205fdeb50e5c4913ead2297a10f51e35.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

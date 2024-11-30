@@ -209,17 +209,16 @@ animations = [{
 }],
 "loop": false,
 "name": &"muerte",
-"speed": 10.0
+"speed": 13.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3e4m"]
-size = Vector2(19.6748, 35.9516)
+size = Vector2(18.1008, 35.9517)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14eg5"]
-size = Vector2(33.5, 41)
+size = Vector2(28, 44)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
-slide_on_ceiling = false
 script = ExtResource("1_gepxm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -229,23 +228,31 @@ sprite_frames = SubResource("SpriteFrames_0oii3")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(13.5, -11.5)
+position = Vector2(12.5, -15.5)
 scale = Vector2(1.27066, 1.08479)
 shape = SubResource("RectangleShape2D_q3e4m")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(11.25, -12.5)
+position = Vector2(12, -17)
 shape = SubResource("RectangleShape2D_14eg5")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(-59, 0)
+position = Vector2(2, 0)
+target_position = Vector2(-5, 0)
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
-target_position = Vector2(51, 0)
+position = Vector2(24, 0)
+target_position = Vector2(3, 0)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.491
 one_shot = true
 
+[node name="idleTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="idleTimer" to="." method="_on_idle_timer_timeout"]

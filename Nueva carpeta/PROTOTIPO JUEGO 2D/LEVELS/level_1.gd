@@ -43,3 +43,14 @@ func _on_area_edificio_body_exited(body):
 
 func habilitar_colision():
 	$Paredarena/CollisionShape2D.disabled = false
+	
+
+
+func _on_areafinal_body_entered(body):
+	$AnimationPlayer.play("Transicionfinal")
+	$UI.hide()
+	$areafinal/Timer.start()
+
+
+func _on_timer_timeout():
+	get_tree().change_scene_to_file("res://ESCENAS/avisodemo.tscn")

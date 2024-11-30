@@ -1,17 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfu6pnsbdxsk8"]
+[gd_scene load_steps=15 format=3 uid="uid://dfu6pnsbdxsk8"]
 
 [ext_resource type="Texture2D" uid="uid://dd0spakvmpqfm" path="res://Spritesbase/Spriteambiente/Apartamento1.png" id="1_8y6pl"]
 [ext_resource type="Texture2D" uid="uid://dfv5aw1075o63" path="res://Spritesbase/logo.png" id="1_nq0xo"]
+[ext_resource type="Script" path="res://ESCENAS/menu.gd" id="1_tkmyy"]
 [ext_resource type="Script" path="res://ESCENAS/Parallaxmenu.gd" id="1_vijt6"]
 [ext_resource type="Texture2D" uid="uid://dorus13serxf6" path="res://fondo/background2.png" id="2_hvyx4"]
 [ext_resource type="FontFile" uid="uid://x6rttaws5tne" path="res://fonts/Godzilla.ttf" id="3_1fufc"]
 [ext_resource type="Texture2D" uid="uid://djhoto6c4423v" path="res://Spritesbase/edificios destruidosver3.png" id="3_424ck"]
 [ext_resource type="Texture2D" uid="uid://lwqa4tq5511u" path="res://Spritesbase/Spriteambiente/Apartamento fuera.png" id="5_w2rs7"]
 [ext_resource type="Texture2D" uid="uid://l7gnsimpufpn" path="res://Spritesbase/edificios destruidosver2.png" id="6_v0ggt"]
+[ext_resource type="AudioStream" uid="uid://uxrcvng74fs8" path="res://fondo/Crybaby.ogg" id="10_pwufw"]
+[ext_resource type="Texture2D" uid="uid://3skfrxbchn5d" path="res://Spritesbase/Recurso 1@4x-8.png" id="11_cu22s"]
 
 [sub_resource type="FontVariation" id="FontVariation_pyp0c"]
 base_font = ExtResource("3_1fufc")
 spacing_glyph = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mddas"]
+bg_color = Color(0.533333, 0.0627451, 0.0392157, 0.886275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u77ri"]
+bg_color = Color(0.337255, 0.254902, 0.247059, 0.85098)
 
 [node name="MENU" type="Control"]
 layout_mode = 3
@@ -20,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tkmyy")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("1_vijt6")
@@ -77,11 +87,11 @@ centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(170, 0)
-motion_mirroring = Vector2(900, 0)
+motion_mirroring = Vector2(520, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
 modulate = Color(0.643137, 0.572549, 0.505882, 1)
-position = Vector2(-127, 283)
+position = Vector2(-316, 283)
 scale = Vector2(2.20769, 2.20769)
 texture = ExtResource("1_8y6pl")
 centered = false
@@ -123,48 +133,51 @@ grow_vertical = 2
 color = Color(0.423529, 0.133333, 0.0588235, 1)
 
 [node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(585, 220)
+position = Vector2(597, 220)
 scale = Vector2(3.93993, 3.93993)
 texture = ExtResource("1_nq0xo")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -151.0
-offset_top = 101.0
+offset_top = -211.0
 offset_right = 151.0
-offset_bottom = 169.0
+offset_bottom = -76.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+theme_override_constants/separation = 33
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Jugar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_fonts/font = SubResource("FontVariation_pyp0c")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_mddas")
 text = "JUGAR"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -151.0
-offset_top = 190.0
-offset_right = 151.0
-offset_bottom = 258.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/Jugar"]
 
-[node name="Button" type="Button" parent="VBoxContainer2"]
+[node name="Salir" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_fonts/font = SubResource("FontVariation_pyp0c")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_u77ri")
 text = "SALIR"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_pwufw")
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(106, 559)
+scale = Vector2(0.073763, 0.073763)
+texture = ExtResource("11_cu22s")
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
