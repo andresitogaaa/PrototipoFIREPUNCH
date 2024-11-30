@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfu6pnsbdxsk8"]
+[gd_scene load_steps=10 format=3 uid="uid://dfu6pnsbdxsk8"]
 
 [ext_resource type="Texture2D" uid="uid://dd0spakvmpqfm" path="res://Spritesbase/Spriteambiente/Apartamento1.png" id="1_8y6pl"]
 [ext_resource type="Texture2D" uid="uid://dfv5aw1075o63" path="res://Spritesbase/logo.png" id="1_nq0xo"]
+[ext_resource type="Script" path="res://ESCENAS/Parallaxmenu.gd" id="1_vijt6"]
+[ext_resource type="Texture2D" uid="uid://dorus13serxf6" path="res://fondo/background2.png" id="2_hvyx4"]
 [ext_resource type="FontFile" uid="uid://x6rttaws5tne" path="res://fonts/Godzilla.ttf" id="3_1fufc"]
+[ext_resource type="Texture2D" uid="uid://djhoto6c4423v" path="res://Spritesbase/edificios destruidosver3.png" id="3_424ck"]
+[ext_resource type="Texture2D" uid="uid://lwqa4tq5511u" path="res://Spritesbase/Spriteambiente/Apartamento fuera.png" id="5_w2rs7"]
+[ext_resource type="Texture2D" uid="uid://l7gnsimpufpn" path="res://Spritesbase/edificios destruidosver2.png" id="6_v0ggt"]
 
 [sub_resource type="FontVariation" id="FontVariation_pyp0c"]
 base_font = ExtResource("3_1fufc")
@@ -17,18 +22,94 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
+script = ExtResource("1_vijt6")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = 1
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-332, 276)
+scale = Vector2(1, 2.04)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-modulate = Color(0.643137, 0.643137, 0.643137, 1)
-position = Vector2(83, 426)
-scale = Vector2(2.64231, 2.64231)
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1073.92, 79)
+scale = Vector2(25.2462, 3.6232)
+texture = ExtResource("2_hvyx4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(0.843137, 0.690196, 0.545098, 0.243137)
+self_modulate = Color(0.843137, 0.690196, 0.545098, 0.47451)
+position = Vector2(1109, 16.6667)
+scale = Vector2(25.2445, 2.80798)
+texture = ExtResource("2_hvyx4")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(0.843137, 0.690196, 0.545098, 0.47451)
+position = Vector2(1073.5, -27.125)
+scale = Vector2(25.2334, 2.80798)
+texture = ExtResource("2_hvyx4")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(0.843137, 0.690196, 0.545098, 0.47451)
+position = Vector2(1072.5, -71.1251)
+scale = Vector2(25.2112, 2.80798)
+texture = ExtResource("2_hvyx4")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-8, 434)
+motion_mirroring = Vector2(700, 0)
+
+[node name="Edificios" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+modulate = Color(0.894118, 0.764706, 0.603922, 1)
+position = Vector2(129, -107)
+scale = Vector2(2.49302, 2.32841)
+texture = ExtResource("3_424ck")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-228, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Edificios3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+modulate = Color(0.890196, 0.729412, 0.588235, 1)
+position = Vector2(793, 225)
+rotation = -3.14159
+scale = Vector2(2.50765, -2.45242)
+texture = ExtResource("5_w2rs7")
+centered = false
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(170, 0)
+motion_mirroring = Vector2(900, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
+modulate = Color(0.643137, 0.572549, 0.505882, 1)
+position = Vector2(-127, 283)
+scale = Vector2(2.20769, 2.20769)
 texture = ExtResource("1_8y6pl")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(940, 0)
+
+[node name="Edificios2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+modulate = Color(0.831373, 0.678431, 0.482353, 1)
+position = Vector2(800, 121)
+rotation = -3.14159
+scale = Vector2(3.56598, -3.63286)
+texture = ExtResource("6_v0ggt")
+centered = false
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(900, 0)
+
+[node name="Edificios4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+modulate = Color(0.513726, 0.396078, 0.235294, 1)
+position = Vector2(469, 43)
+scale = Vector2(3.60769, 3.60769)
+texture = ExtResource("5_w2rs7")
+centered = false
+flip_h = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +121,6 @@ offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.423529, 0.133333, 0.0588235, 1)
-metadata/_edit_lock_ = true
 
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(585, 220)

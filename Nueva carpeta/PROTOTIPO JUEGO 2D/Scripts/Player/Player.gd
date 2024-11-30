@@ -52,12 +52,15 @@ func movement(delta):
 			velocity.x += speed * delta
 			velocity.x = clamp(speed, 100.0, speed)
 			$Sprite2D.flip_h = false
+			$Sprite2D.play("correr")
 		if input < 0:
 			velocity.x -= speed * delta
 			velocity.x = clamp(-speed, 100.0, -speed)
 			$Sprite2D.flip_h = true
+			$Sprite2D.play("correr")
 	if input == 0:
 		velocity.x = 0
+		$Sprite2D.play("idle")
 		
 # CODE RELATED TO JUMPING
 	if is_on_floor():

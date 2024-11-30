@@ -3,6 +3,8 @@ extends CharacterBody2D
 var Gravedad = 9.8
 var speed = 20
 
+
+
 func _ready():
 	velocity.x = -speed
 
@@ -35,4 +37,9 @@ func _on_area_2d_body_entered(body):
 			Global.Player_life -= 1
 		
 func get_damage(damage):
-	queue_free()
+	$AnimatedSprite2D.play("muerte")
+	$Timer.wait_time = 1
+	$Timer.start()
+	#queue_free()
+		
+		
